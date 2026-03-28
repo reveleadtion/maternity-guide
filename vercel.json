@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "buildCommand": "node scripts/generate.js",
+  "outputDirectory": "output",
+  "routes": [
+    {
+      "src": "/maternity-guide",
+      "dest": "/maternity-guide/index.html"
+    },
+    {
+      "src": "/maternity-guide/(.*)",
+      "dest": "/maternity-guide/$1"
+    }
+  ]
+}
