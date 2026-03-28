@@ -117,10 +117,10 @@ ${BRAND_CSS}
 <body>
 <header class="site-header">
   <a href="${SITE_URL}">
-    <div class="brand-name">Two Wild Souls</div>
-    <div class="brand-sub">Photography · Rochester, MI</div>
+    <div class="brand-name">Two Wild Souls Photography</div>
+    <div class="brand-sub">Rochester, Michigan</div>
   </a>
-  <a href="${QUIZ_URL}" class="btn-book">Book a session</a>
+  <a href="${QUIZ_URL}" class="btn-book">Reserve Your session</a>
 </header>
 <main class="container">
   <nav class="breadcrumb">
