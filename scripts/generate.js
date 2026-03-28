@@ -4,7 +4,7 @@
  * TWO WILD SOULS — Maternity Content Database Generator
  *
  * Outputs:
- *   output/index.html            → hub (deploy root of guide.twowildsoulsphotography.com)
+ *   output/index.html            → hub (deploy root of maternityguide.twowildsoulsphotography.com)
  *   output/[slug]/index.html     → individual entry pages
  *   output/hub-embed.html        → paste into Showit code block at /maternity-guide
  */
@@ -341,5 +341,5 @@ console.log(`\nTotal: ${count + 2} HTML files written.`);
 console.log("\nDeploy steps:");
 console.log("  1. Push this repo to GitHub");
 console.log("  2. Import into Vercel → output directory: output → build command: node scripts/generate.js");
-console.log("  3. Add custom domain: guide.twowildsoulsphotography.com");
+console.log("  3. Add custom domain: maternityguide.twowildsoulsphotography.com");
 console.log("  4. In Showit: new page at /maternity-guide → Code Embed → paste hub-embed.html contents");
