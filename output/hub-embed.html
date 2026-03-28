@@ -3,34 +3,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-#tws-hub{font-family:'Jost',sans-serif;font-weight:300;color:#2B1F1A;max-width:960px;margin:0 auto;padding:0 24px;}
+#tws-hub{font-family:'Jost',sans-serif;font-weight:300;color:#2B1F1A;background:#ffffff;width:100%;padding:0;}
 #tws-hub *{box-sizing:border-box;}
-
-#tws-hub .hero{text-align:center;padding:60px 0 48px;border-bottom:1px solid #E6DDD4;margin-bottom:44px;}
-#tws-hub .hero-ey{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#C4856A;font-weight:500;margin-bottom:14px;}
-#tws-hub .hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,6vw,3.2rem);font-weight:300;line-height:1.15;letter-spacing:-.01em;color:#2B1F1A;margin-bottom:18px;}
-#tws-hub .hero h1 em{font-style:italic;color:#C4856A;}
-#tws-hub .hero p{font-size:.95rem;color:#7A6A63;max-width:500px;margin:0 auto;line-height:1.75;}
 
 #tws-hub .filter-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
 #tws-hub .search-wrap{position:relative;flex:1;min-width:210px;}
-#tws-hub .search-wrap input{width:100%;padding:11px 16px 11px 38px;border:1px solid #E6DDD4;border-radius:4px;font-family:'Jost',sans-serif;font-size:.84rem;font-weight:300;background:#fff;color:#2B1F1A;outline:none;transition:border-color .15s;}
+#tws-hub .search-wrap input{width:100%;padding:11px 16px 11px 38px;border:1px solid #E6DDD4;border-radius:4px;font-family:'Jost',sans-serif;font-size:.84rem;font-weight:300;background:#ffffff;color:#2B1F1A;outline:none;transition:border-color .15s;}
 #tws-hub .search-wrap input:focus{border-color:#C4856A;}
 #tws-hub .search-wrap input::placeholder{color:#B0A49C;}
 #tws-hub .s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:14px;height:14px;opacity:.3;pointer-events:none;}
 
-#tws-hub .fbtn{font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:10px 15px;border:1px solid #E6DDD4;border-radius:2px;background:#fff;color:#7A6A63;cursor:pointer;transition:all .15s;white-space:nowrap;}
+#tws-hub .fbtn{font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:10px 15px;border:1px solid #E6DDD4;border-radius:2px;background:#ffffff;color:#7A6A63;cursor:pointer;transition:all .15s;white-space:nowrap;}
 #tws-hub .fbtn:hover{border-color:#2B1F1A;color:#2B1F1A;}
-#tws-hub .fbtn.active{background:#2B1F1A;color:#FAF7F2;border-color:#2B1F1A;}
+#tws-hub .fbtn.active{background:#2B1F1A;color:#ffffff;border-color:#2B1F1A;}
 #tws-hub .fbtn.active.symptoms{background:#C4856A;border-color:#C4856A;}
 #tws-hub .fbtn.active.nutrition{background:#7A9E8A;border-color:#7A9E8A;}
 #tws-hub .fbtn.active.prep{background:#B8945F;border-color:#B8945F;}
 
-#tws-hub .meta-row{font-size:.7rem;letter-spacing:.06em;color:#B0A49C;margin-bottom:24px;}
+#tws-hub .meta-row{font-size:.7rem;letter-spacing:.06em;color:#B0A49C;margin-bottom:24px;margin-top:10px;}
 
-#tws-hub .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:15px;margin-bottom:64px;}
+#tws-hub .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:15px;margin-bottom:32px;}
 
-#tws-hub .tws-card{display:flex;flex-direction:column;gap:7px;background:#fff;border:1px solid #E6DDD4;border-radius:8px;padding:21px 19px;transition:box-shadow .18s,border-color .18s,transform .18s;color:#2B1F1A;text-decoration:none;}
+#tws-hub .tws-card{display:flex;flex-direction:column;gap:7px;background:#ffffff;border:1px solid #E6DDD4;border-radius:8px;padding:21px 19px;transition:box-shadow .18s,border-color .18s,transform .18s;color:#2B1F1A;text-decoration:none;}
 #tws-hub .tws-card:hover{box-shadow:0 6px 22px rgba(43,31,26,.08);border-color:#D4C8BE;transform:translateY(-2px);}
 #tws-hub .tws-pill{display:inline-block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:4px 10px;border-radius:2px;align-self:flex-start;}
 #tws-hub .tws-pill.symptoms{background:#F5EAE4;color:#C4856A;}
@@ -43,28 +37,9 @@
 #tws-hub .tws-card:hover .tws-arrow{transform:translateX(4px);}
 #tws-hub .hidden{display:none!important;}
 #tws-hub .no-res{display:none;text-align:center;padding:64px 0;color:#B0A49C;font-size:.9rem;font-style:italic;}
-
-#tws-hub .cta{background:#2B1F1A;border-radius:12px;padding:44px 40px;margin-bottom:60px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
-#tws-hub .cta-ey{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#C4856A;font-weight:500;margin-bottom:10px;}
-#tws-hub .cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:300;color:#FAF7F2;margin-bottom:10px;max-width:300px;line-height:1.25;}
-#tws-hub .cta p{font-size:.83rem;color:rgba(250,247,242,.6);line-height:1.65;max-width:330px;}
-#tws-hub .btn-l{display:inline-block;font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;background:#FAF7F2;color:#2B1F1A;padding:13px 22px;border-radius:2px;white-space:nowrap;transition:opacity .15s;text-decoration:none;}
-#tws-hub .btn-l:hover{opacity:.88;}
-
-@media(max-width:640px){
-  #tws-hub .hero{padding:40px 0 32px;}
-  #tws-hub .cta{padding:28px 22px;}
-  #tws-hub .cta h2{font-size:1.45rem;}
-}
 </style>
 
 <div id="tws-hub">
-  <div class="hero">
-    <p class="hero-ey">Two Wild Souls Photography</p>
-    <h1>The Complete<br><em>Maternity Guide</em></h1>
-    <p>A searchable resource for every stage of pregnancy — symptoms, nutrition, and preparing for your baby's arrival. 60 topics and growing.</p>
-  </div>
-
   <div class="filter-row">
     <div class="search-wrap">
       <svg class="s-icon" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="#2B1F1A" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="#2B1F1A" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -500,15 +475,6 @@
       <span class="tws-arrow">→</span>
     </a></div>
   <p class="no-res" id="tws-nr">No topics match — try different keywords.</p>
-
-  <div class="cta">
-    <div>
-      <p class="cta-ey">Rochester, Michigan</p>
-      <h2>Ready to document this season?</h2>
-      <p>Jasmine creates genuine, emotional maternity portraits across Metro Detroit — with complimentary hair &amp; makeup on every session.</p>
-    </div>
-    <a href="https://moments.twowildsoulsphotography.com" class="btn-l">Find your perfect session →</a>
-  </div>
 </div>
 
 <script>
