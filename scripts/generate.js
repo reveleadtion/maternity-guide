@@ -308,7 +308,7 @@ ${inner}
 function buildVercelConfig() {
   return JSON.stringify({
     version: 2,
-    buildCommand: "node scripts/generate.js",
+    buildCommand: "npm run build",
     outputDirectory: "output",
     cleanUrls: true,
     trailingSlash: false
@@ -340,6 +340,6 @@ console.log("✓  vercel.json updated");
 console.log(`\nTotal: ${count + 2} HTML files written.`);
 console.log("\nDeploy steps:");
 console.log("  1. Push this repo to GitHub");
-console.log("  2. Import into Vercel → output directory: output → build command: node scripts/generate.js");
+console.log("  2. Import into Vercel → output directory: output → build command: npm run build");
 console.log("  3. Add custom domain: maternityguide.twowildsoulsphotography.com");
 console.log("  4. In Showit: new page at /maternity-guide → Code Embed → paste hub-embed.html contents");

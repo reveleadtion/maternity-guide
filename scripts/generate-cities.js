@@ -3,7 +3,7 @@
 /**
  * TWO WILD SOULS — City Listicle Generator
  *
- * Reads data/cities.json + data/categories.json and outputs:
+ * Reads data/cities.json + data/categories.json (+ optional data/inserts/{category}__{city}.html) and outputs:
  *   output/[category-slug]/[city-slug]/index.html   → one page per city × category
  *   output/local-guide/index.html                   → hub listing all cities × categories
  *
@@ -15,6 +15,7 @@ const path = require("path");
 
 const CITIES_FILE     = path.join(__dirname, "../data/cities.json");
 const CATEGORIES_FILE = path.join(__dirname, "../data/categories.json");
+const INSERTS_DIR     = path.join(__dirname, "../data/inserts");
 const OUTPUT_ROOT     = path.join(__dirname, "../output");
 
 const SITE_NAME = "Two Wild Souls Photography";
@@ -45,6 +46,13 @@ function fill(str, city) {
   return str
     .replace(/\{city\}/g, city.city)
     .replace(/\{state\}/g, city.state);
+}
+
+/** Optional HTML merged after intro — survives deploys (unlike editing output/ directly). */
+function readPageInsert(catSlug, citySlug, city) {
+  const file = path.join(INSERTS_DIR, `${catSlug}__${citySlug}.html`);
+  if (!fs.existsSync(file)) return "";
+  return fill(fs.readFileSync(file, "utf8").trim(), city);
 }
 
 // ─── BRAND CSS (shared) ──────────────────────────────────────────────────────
@@ -86,6 +94,8 @@ function buildCityPage(city, cat) {
   const description = fill(cat.description, city);
   const intro       = fill(cat.intro, city);
   const ctaContext  = fill(cat.cta_context, city);
+
+  const insertHTML = readPageInsert(cat.slug, city.slug, city);
 
   const sectionsHTML = cat.sections.map(s => `
     <div style="margin-bottom:36px;">
@@ -162,6 +172,7 @@ ${HEADER_HTML}
     <h1>${h1}</h1>
   </header>
   <p class="intro">${intro}</p>
+  ${insertHTML}
   ${sectionsHTML}
   ${twsBlock}
   <div class="disclaimer">This guide is for informational purposes only. Provider listings and recommendations reflect general guidance — always verify credentials, insurance acceptance, and availability directly with any provider before booking.</div>
