@@ -17,7 +17,7 @@ const OUTPUT_ROOT = path.join(__dirname, "../output");
 
 const SITE_NAME = "Two Wild Souls Photography";
 const SITE_URL  = "https://www.twowildsoulsphotography.com";
-const GUIDE_URL = "https://guide.twowildsoulsphotography.com";
+const GUIDE_URL = "https://maternityguide.twowildsoulsphotography.com";
 const QUIZ_URL  = "https://moments.twowildsoulsphotography.com";
 const HUB_URL   = `${SITE_URL}/maternity-guide`;
 
