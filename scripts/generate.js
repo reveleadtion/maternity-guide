@@ -275,7 +275,7 @@ function buildHub(entries, mode) {
 <style>
 ${BRAND_CSS}
 body{min-height:100vh;}
-.site-header{padding:18px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6DDD4;flex-wrap:wrap;gap:14px;}
+.site-header{padding:18px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #FFFFFF;flex-wrap:wrap;gap:14px;}
 .brand-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:.04em;}
 .brand-sub{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#7A6A63;}
 .btn-h{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;background:#2B1F1A;color:#FAF7F2;padding:10px 20px;border-radius:2px;white-space:nowrap;transition:opacity .15s;}
@@ -287,10 +287,10 @@ body{min-height:100vh;}
 <body>
 <header class="site-header">
   <a href="${SITE_URL}">
-    <div class="brand-name">Two Wild Souls</div>
-    <div class="brand-sub">Photography · Rochester, MI</div>
+    <div class="brand-name">Two Wild Souls Photography</div>
+    <div class="brand-sub">Rochester, Michigan</div>
   </a>
-  <a href="${QUIZ_URL}" class="btn-h">Book a session</a>
+  <a href="${QUIZ_URL}" class="btn-h">Reserve Your session</a>
 </header>
 
 ${inner}
