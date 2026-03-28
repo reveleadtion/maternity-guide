@@ -1,0 +1,46 @@
+{
+  "best-midwife__rochester-mi": {
+    "heading": "Top Midwives near {city}, {state}",
+    "subheading": "Based on credentials, reviews & local reputation",
+    "items": [
+      {
+        "title": "Women's Excellence Midwifery – Rochester Hills",
+        "badges": [
+          "1901 Star Batt Dr #200, Rochester Hills, MI",
+          "CNM team, Henry Ford Rochester delivery, one of Michigan's lowest c-section rates"
+        ],
+        "paragraph": "The midwifery team at Women's Excellence Rochester is arguably the most established CNM program in the area — with a model built entirely around supporting low-intervention birth within a hospital setting. Their consistently low c-section rate reflects a genuine philosophy, not just marketing."
+      },
+      {
+        "title": "Seven Springs Midwifery",
+        "badges": ["Rochester, MI", "CNM Martha Boudakian, practicing since 1998, in-home holistic care"],
+        "paragraph": "Martha Boudakian has been caring for Rochester-area families since 1998, bringing deep community roots and clinical experience to every prenatal visit. Her long tenure and personal approach make her one of the most trusted names in local midwifery care."
+      },
+      {
+        "title": "Seasons of Life – Brigitte Rhody-Garrison CNM",
+        "badges": ["Rochester area, MI", "CNM, home births, holistic primary healthcare, full prenatal & postpartum"],
+        "paragraph": "Brigitte Rhody-Garrison offers comprehensive midwifery care from adolescence through menopause, including home birth, prenatal care, and holistic primary health services. Her whole-person approach and availability for home deliveries make her a standout option for families seeking personalized out-of-hospital care."
+      },
+      {
+        "title": "Oakland Macomb Obstetrics & Gynecology – Midwifery",
+        "badges": ["Rochester Hills, MI", "CNM team, holistic care ethos, immediate physician backup on-site"],
+        "paragraph": "The midwifery program at Oakland Macomb OB/GYN creates a rare combination: the warmth and philosophy of midwife-led care with the immediate safety net of a major OB practice in the same building. Their CNMs are known for creating an atmosphere that feels home-like even within a clinical setting."
+      },
+      {
+        "title": "It's Your Birth – Midwife Jenny Zaner",
+        "badges": ["Clinton Township, MI (~20 mi)", "Freestanding birth center + home birth, CPM, private birth suites"],
+        "paragraph": "Midwife Jenny Zaner's practice is the closest freestanding birth center option to Rochester, with private birthing suites in Clinton Township. Her free consultation model and genuine dedication to birth preferences make her a top choice for Rochester families seeking an out-of-hospital experience."
+      },
+      {
+        "title": "Corewell Health CNM Program",
+        "badges": ["Royal Oak & Dearborn, MI", "CNMs within Corewell system, 24/7 availability, William Beaumont delivery"],
+        "paragraph": "Corewell Health's certified nurse-midwife program offers Rochester families the option of midwife-led care through a major health system — with round-the-clock availability and delivery at William Beaumont University Hospital when needed."
+      },
+      {
+        "title": "University of Michigan Health – CNM Program",
+        "badges": ["Ann Arbor, MI (~50 mi)", "Von Voigtlander Birth Center, water birth, VBAC support, nitrous oxide"],
+        "paragraph": "For Rochester families open to the drive, U-M Health's celebrated midwifery program at Von Voigtlander Women's Hospital offers one of Michigan's most comprehensive birth experiences — including water birth options, VBAC support, and midwife continuity throughout labor."
+      }
+    ]
+  }
+}
