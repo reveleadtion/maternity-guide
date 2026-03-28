@@ -3,7 +3,11 @@
 /**
  * TWO WILD SOULS — City Listicle Generator
  *
- * Reads data/cities.json + data/categories.json (+ optional data/inserts/{category}__{city}.html) and outputs:
+ * Reads data/cities.json + data/categories.json and outputs:
+ *   • Optional listicle block after intro (first match wins):
+ *     1) data/inserts/{category}__{city}.html — raw HTML fragment
+ *     2) data/listicles.json key "{category}__{city}" — structured items (survives npm run build)
+ *   Do NOT edit output/ for custom listicles; the build overwrites those files.
  *   output/[category-slug]/[city-slug]/index.html   → one page per city × category
  *   output/local-guide/index.html                   → hub listing all cities × categories
  *
@@ -16,6 +20,7 @@ const path = require("path");
 const CITIES_FILE     = path.join(__dirname, "../data/cities.json");
 const CATEGORIES_FILE = path.join(__dirname, "../data/categories.json");
 const INSERTS_DIR     = path.join(__dirname, "../data/inserts");
+const LISTICLES_FILE  = path.join(__dirname, "../data/listicles.json");
 const OUTPUT_ROOT     = path.join(__dirname, "../output");
 
 const SITE_NAME = "Two Wild Souls Photography";
@@ -53,6 +58,83 @@ function readPageInsert(catSlug, citySlug, city) {
   const file = path.join(INSERTS_DIR, `${catSlug}__${citySlug}.html`);
   if (!fs.existsSync(file)) return "";
   return fill(fs.readFileSync(file, "utf8").trim(), city);
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+let listiclesCache = null;
+function loadListicles() {
+  if (listiclesCache !== null) return listiclesCache;
+  if (!fs.existsSync(LISTICLES_FILE)) {
+    listiclesCache = {};
+    return listiclesCache;
+  }
+  try {
+    listiclesCache = JSON.parse(fs.readFileSync(LISTICLES_FILE, "utf8"));
+  } catch (e) {
+    console.error("✗  listicles.json:", e.message);
+    listiclesCache = {};
+  }
+  return listiclesCache;
+}
+
+function buildListicleHTML(city, data) {
+  if (!data.items || !data.items.length) return "";
+  const h2Text = escapeHtml(fill(data.heading || "", city));
+  const subText = escapeHtml(
+    fill(data.subheading || "Based on credentials, reviews & local reputation", city)
+  );
+  const BADGE_A =
+    "font-size:.68rem;letter-spacing:.06em;color:#7A6A63;background:#F2EDE5;padding:3px 9px;border-radius:2px;";
+  const BADGE_B =
+    "font-size:.68rem;letter-spacing:.06em;color:#7A9E8A;background:#EEF5F0;padding:3px 9px;border-radius:2px;";
+
+  const rows = data.items
+    .map((item, i) => {
+      const num = String(i + 1).padStart(2, "0");
+      const badges = (item.badges || [])
+        .map((b, idx) => {
+          const style = idx % 2 === 0 ? BADGE_A : BADGE_B;
+          return `<span style="${style}">${escapeHtml(b)}</span>`;
+        })
+        .join("");
+      return `  <div style="padding:22px 0;border-bottom:1px solid #E6DDD4;display:grid;grid-template-columns:36px 1fr;gap:16px;align-items:start;">
+    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:#C4856A;line-height:1;">${num}</div>
+    <div>
+      <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:400;color:#2B1F1A;margin-bottom:5px;">${escapeHtml(item.title)}</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px;">${badges}</div>
+      <p style="font-size:.9rem;color:#4A3A34;line-height:1.72;">${escapeHtml(item.paragraph)}</p>
+    </div>
+  </div>`;
+    })
+    .join("\n");
+
+  return `<div style="margin:44px 0 36px;">
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#2B1F1A;margin-bottom:4px;">${h2Text}</h2>
+    <p style="font-size:.78rem;letter-spacing:.08em;color:#B0A49C;margin-bottom:0;text-transform:uppercase;">${subText}</p>
+    <div>
+${rows}
+    </div>
+  </div>`;
+}
+
+function readListicleHTML(catSlug, citySlug, city) {
+  const data = loadListicles()[`${catSlug}__${citySlug}`];
+  if (!data) return "";
+  return buildListicleHTML(city, data);
+}
+
+/** HTML insert file overrides listicles.json for the same category/city. */
+function pageInsertAfterIntro(catSlug, citySlug, city) {
+  const fromHtml = readPageInsert(catSlug, citySlug, city);
+  if (fromHtml) return fromHtml;
+  return readListicleHTML(catSlug, citySlug, city);
 }
 
 // ─── BRAND CSS (shared) ──────────────────────────────────────────────────────
@@ -95,7 +177,7 @@ function buildCityPage(city, cat) {
   const intro       = fill(cat.intro, city);
   const ctaContext  = fill(cat.cta_context, city);
 
-  const insertHTML = readPageInsert(cat.slug, city.slug, city);
+  const insertHTML = pageInsertAfterIntro(cat.slug, city.slug, city);
 
   const sectionsHTML = cat.sections.map(s => `
     <div style="margin-bottom:36px;">
@@ -248,6 +330,12 @@ ${FOOTER_HTML}
 
 const cities     = JSON.parse(fs.readFileSync(CITIES_FILE, "utf8"));
 const categories = JSON.parse(fs.readFileSync(CATEGORIES_FILE, "utf8"));
+
+loadListicles();
+const listiclePages = Object.keys(listiclesCache).filter(
+  (k) => listiclesCache[k].items && listiclesCache[k].items.length
+).length;
+console.log(`✓  Listicle keys in data/listicles.json (with items): ${listiclePages}`);
 
 let count = 0;
 
