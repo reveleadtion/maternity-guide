@@ -1,10 +1,11 @@
 {
   "name": "tws-maternity-db",
-  "version": "1.0.0",
-  "description": "Two Wild Souls Photography — Maternity content database & static site generator",
+  "version": "2.0.0",
+  "description": "Two Wild Souls Photography — Maternity content database & city listicle generator",
   "scripts": {
-    "build": "node scripts/generate.js",
-    "dev": "node scripts/generate.js && npx serve output"
+    "build": "node scripts/generate.js && node scripts/generate-cities.js",
+    "build:guide": "node scripts/generate.js",
+    "build:cities": "node scripts/generate-cities.js"
   },
   "engines": {
     "node": ">=16"
